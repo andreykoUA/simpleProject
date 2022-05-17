@@ -1,20 +1,28 @@
 "use strict";
 
-console.log('arr' + " - object");
-console.log(4 + +" 5"); // string becomes int
+const numberOfFilms = +prompt('How many films have you seen ?', '');
 
-let incr = 10,
-    decr = 10;
+const personalMovieDB = {
+    count: numberOfFilms,
+    movies: {},
+    actors: {},
+    genres: [],
+    privat: false
+};
 
-// ++incr;
-// --decr;
+const numberOfAskedQuestions = 2;
 
-// console.log(++incr);
-// console.log(--decr);
+let myFunc = function () {
+    const lastWatchedMovie = prompt('One of the last watched movies ?', '');
+    const rateMovie = prompt('Give rating to that movie ?', '');
+    personalMovieDB.movies[lastWatchedMovie] = rateMovie;
+};
 
-console.log(2 * 4 === 8);
+for (let i = 0; i < numberOfAskedQuestions; i++) {
+    // const lastWatchedMovie = prompt('One of the last watched movies ?', '');
+    // const rateMovie = prompt('Give rating to that movie ?', '');
+    // personalMovieDB['movies'][lastWatchedMovie] = rateMovie;
+    myFunc();
+};
 
-const isChecked = true,
-    isClosed = false;
-
-console.log(isChecked && !isClosed);
+console.log(personalMovieDB);
