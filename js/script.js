@@ -1,7 +1,7 @@
 "use strict";
 
 console.log('arr' + " - object");
-console.log(4 + +" 5");
+console.log(4 + +" 5"); // string becomes int
 
 let incr = 10,
     decr = 10;
