@@ -26,54 +26,73 @@
 // };
 
 // console.log(personalMovieDB);
+//=================================================
 
-//====================================
+// Место для первой задачи
+function firstTask() {
+    // Пишем решение вот тут
+    for (let i = 5; i <= 10; i++) {
+        console.log(i);
+    }
 
-for (let i = 0; i < 3; i++) {
-    console.log(i);
-    for (let j = 0; j < 3; j++) {
-        console.log(j);
-    };
-};
+}
 
-// console.log(NaN || 2 || undefined); // 2
-// console.log(NaN && 2 && undefined); // NaN
-// console.log(1 && 2 && 3); // 3
-// console.log(!1 && 2 || !3); // false
-// console.log(25 || null && !3); // 25
-// console.log(NaN || null || !3 || undefined || 5); // 5
-// console.log(NaN || null && !3 && undefined || 5); // 5
-// console.log(5 === 5 && 3 > 1 || 5); // true
+// Место для второй задачи
+function secondTask() {
+    // Пишем решение вот тут
+    for (let i = 20; i > 9; i--) {
+        if (i === 13) break;
+        console.log(i);
+    }
 
-// *
-// **
-// ***
-// ****
-// *****
-// ******
+}
 
-let result = '';
-const lenght = 7;
+// Место для третьей задачи
+function thirdTask() {
+    // Пишем решение вот тут
+    for (let i = 2; i <= 10; i += 2) {
+        console.log(i);
+    }
 
-for (let i = 1; i < lenght; i++) {
+}
 
-    for (let j = 0; j < i; j++) {
-        result += '*';
-    };
+// Место для четвертой задачи
 
-    result += '\n';
-};
+// Цикл, который нужно переписать:
 
-console.log(result);
+// for (let i = 2; i <= 16; i++) {
+//     if (i % 2 === 0) {
+//         continue;
+//     } else {
+//         console.log(i);
+//     }
+// }
 
-//==============================
-first: for (let i = 0; i < 3; i++) {
-    console.log(`First level ${i}`);
-    for (let j = 0; j < 3; j++) {
-        console.log(`Second level ${j}`);
-        for (let k = 0; k < 3; k++) {
-            if (k === 2) break first;
-            console.log(`Third level ${k}`);
-        };
-    };
-};
+function fourthTask() {
+    // Пишем решение вот тут
+    let i = 2;
+    while (i < 16) {
+        i++;
+        if (i % 2 === 0) {
+            continue;
+        } else {
+            console.log(i);
+        }
+    }
+}
+
+// Место для пятой задачи
+
+function fifthTask() {
+    const arrayOfNumbers = [];
+
+    // Пишем решение вот тут
+    let j = 0;
+    for (let i = 5; i <= 10; i++) {
+
+        arrayOfNumbers[j] = i;
+        j++;
+    }
+    // Не трогаем
+    return arrayOfNumbers;
+}
