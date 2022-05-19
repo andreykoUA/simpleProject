@@ -32,10 +32,67 @@ function getCoupeNumber(numb) {
     }
 
 }
-getCoupeNumber(37);
-getCoupeNumber(7);
-getCoupeNumber(300);
-getCoupeNumber(0);
-getCoupeNumber(7.7);
-getCoupeNumber(-10);
-getCoupeNumber('Hello');
+
+// Место для первой задачи
+function getTimeFromMinutes(minutes) {
+    if (typeof (minutes) !== 'number' || !Number.isInteger(minutes) || minutes < 0) {
+        return console.log("Ошибка, проверьте данные");
+    }
+
+    let timeInHours = Math.floor(minutes / 60);
+    let timeInMinutes = minutes % 60;
+    let strHours = '';
+
+    switch (timeInHours) {
+        case 1:
+            strHours = 'час';
+            break;
+        case 2:
+            strHours = 'часа';
+            break;
+        case 3:
+            strHours = 'часа';
+            break;
+        case 4:
+            strHours = 'часа';
+            break;
+        default:
+            strHours = 'часов';
+    }
+
+    // if (timeInHours === 1) {
+    //     strHours = 'chas';
+    // } else if (timeInHours === 2 || timeInHours === 3 || timeInHours === 4) {
+    //     strHours = 'chasa';
+    // } else {
+    //     strHours = 'chasov';
+    // }
+
+    // for (let i = 1; i <= 91; i += 10) {
+    //     if (timeInHours === 11) {
+    //         continue;
+    //     }
+    //     if (timeInHours === i) {
+    //         strHours = 'chas';
+    //     }
+    // }
+
+    return console.log(`Это ${timeInHours} ${strHours} и ${timeInMinutes} минут`);
+}
+getTimeFromMinutes(65);
+getTimeFromMinutes(128);
+getTimeFromMinutes(193);
+getTimeFromMinutes(283);
+getTimeFromMinutes(349);
+getTimeFromMinutes(384);
+getTimeFromMinutes(444);
+getTimeFromMinutes(500);
+getTimeFromMinutes(576);
+getTimeFromMinutes(600);
+
+
+
+// Место для второй задачи
+function findMaxNumber() {
+
+}
