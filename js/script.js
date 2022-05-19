@@ -1,6 +1,28 @@
+/* Задание на урок:
+
+1) Первую часть задания повторить по уроку
+
+2) Создать функцию showMyDB, которая будет проверять свойство privat. Если стоит в позиции
+false - выводит в консоль главный объект программы
+
+3) Создать функцию writeYourGenres в которой пользователь будет 3 раза отвечать на вопрос 
+"Ваш любимый жанр под номером ${номер по порядку}". Каждый ответ записывается в массив данных
+genres
+
+P.S. Функции вызывать не обязательно*/
+
 "use strict";
 
-const numberOfFilms = +prompt('How many films have you seen ?', '');
+let numberOfFilms;
+
+function start() {
+    numberOfFilms = +prompt('How many films have you seen ?', '');
+
+    while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+        numberOfFilms = +prompt('How many films have you seen ?', '');
+    }
+}
+start();
 
 const personalMovieDB = {
     count: numberOfFilms,
@@ -12,29 +34,55 @@ const personalMovieDB = {
 
 const numberOfAskedQuestions = 2;
 
-for (let i = 0; i < numberOfAskedQuestions; i++) {
-    const lastWatchedMovie = prompt('One of the last watched movies ?', '');
-    const rateMovie = prompt('Give rating to that movie ?', '');
+function rememberMyFilms() {
+    for (let i = 0; i < numberOfAskedQuestions; i++) {
+        const lastWatchedMovie = prompt('One of the last watched movies ?', '');
+        const rateMovie = prompt('Give rating to that movie ?', '');
 
-    if (lastWatchedMovie != null && rateMovie != null && lastWatchedMovie != '' &&
-        rateMovie != '' && lastWatchedMovie.length < 50) {
-        personalMovieDB.movies[lastWatchedMovie] = rateMovie;
-        console.log("success");
-    } else {
-        console.log('Error');
-        i--;
+        if (lastWatchedMovie != null && rateMovie != null && lastWatchedMovie != '' &&
+            rateMovie != '' && lastWatchedMovie.length < 50) {
+            personalMovieDB.movies[lastWatchedMovie] = rateMovie;
+            console.log("success");
+        } else {
+            console.log('Error');
+            i--;
+        }
     }
 }
 
-if (personalMovieDB.count < 10) {
-    console.log('Переглянуто доволі мало фільмів');
-} else if ((personalMovieDB.count >= 10) && (personalMovieDB.count < 30)) {
-    console.log('Ви класичний глядач');
-} else if (personalMovieDB.count >= 30) {
-    console.log('Ви кіноман');
-} else {
-    console.log('Сталася помилка');
+// rememberMyFilms();
+
+function detectPersonalLevel() {
+    if (personalMovieDB.count < 10) {
+        console.log('Переглянуто доволі мало фільмів');
+    } else if ((personalMovieDB.count >= 10) && (personalMovieDB.count < 30)) {
+        console.log('Ви класичний глядач');
+    } else if (personalMovieDB.count >= 30) {
+        console.log('Ви кіноман');
+    } else {
+        console.log('Сталася помилка');
+    }
 }
 
-console.log(personalMovieDB.movies);
-//=================================================
+// detectPersonalLevel();
+
+function showMyDB(hidden) {
+    if (!hidden) {
+        console.log(personalMovieDB);
+    }
+}
+
+showMyDB(personalMovieDB.privat);
+
+function writeYourGenres() {
+
+    for (let i = 0; i < 3; i++) {
+        const favouriteGenre = prompt(`Your favorite genre number ${i + 1}`, '');
+        personalMovieDB.genres[i] = favouriteGenre;
+    }
+}
+
+writeYourGenres();
+
+
+// console.log(personalMovieDB);
