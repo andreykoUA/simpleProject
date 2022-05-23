@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 // Место для первой задачи
 // function calculateVolumeAndArea(cubeSide) {
@@ -101,26 +101,52 @@
 
 // findMaxNumber(1, 24.6, 4, 7);
 
-function fib(numb) {
-    if (typeof (numb) !== 'number' || numb < 0 || !Number.isInteger(numb)) {
-        return console.log('');
+// function fib(numb) {
+//     if (typeof (numb) !== 'number' || numb < 0 || !Number.isInteger(numb)) {
+//         return console.log('');
+//     }
+
+//     let firstValue = 0;
+//     let lastValue = 1;
+//     let str = '';
+
+//     for (let i = 0; i < numb; i++) {
+//         if (i + 1 === numb) {
+//             str += `${firstValue}`;
+//         } else {
+//             str += `${firstValue} `;
+//         }
+//         let sum = firstValue + lastValue;
+//         firstValue = lastValue;
+//         lastValue = sum;
+
+//     }
+//     return console.log(str);
+// }
+// fib(4);
+
+
+const options = {
+    name: 'test',
+    width: 1024,
+    height: 1024,
+    colors: {
+        border: 'black',
+        bg: 'red'
     }
+};
 
-    let firstValue = 0;
-    let lastValue = 1;
-    let str = '';
+console.log(options[c]);
 
-    for (let i = 0; i < numb; i++) {
-        if (i + 1 === numb) {
-            str += `${firstValue}`;
-        } else {
-            str += `${firstValue} `;
+// delete options.name;
+
+// console.log(options);
+
+for (let key in options) {
+    if (typeof (options[key]) === 'object') {
+        for (let i in options[key]) {
+            console.log(`Property ${i} has value ${options[key][i]}`);
         }
-        let sum = firstValue + lastValue;
-        firstValue = lastValue;
-        lastValue = sum;
-
     }
-    return console.log(str);
+    console.log(`Property ${key} has value ${options[key]}`);
 }
-fib(4);
