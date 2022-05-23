@@ -1,6 +1,5 @@
 "use strict";
 
-// Место для первой задачи
 // function calculateVolumeAndArea(cubeSide) {
 
 //     if (cubeSide < 0 || typeof cubeSide != 'number' || !Number.isInteger(cubeSide)) {
@@ -15,7 +14,6 @@
 
 // calculateVolumeAndArea(15.5);
 
-// // Место для второй задачи
 // function getCoupeNumber(numb) {
 //     if (numb < 0 || typeof numb !== 'number' || !Number.isInteger(numb)) {
 //         return console.log("Ошибка. Проверьте правильность введенного номера места");
@@ -33,7 +31,6 @@
 
 // }
 
-// // Место для первой задачи
 // function getTimeFromMinutes(minutes) {
 //     if (typeof (minutes) !== 'number' || !Number.isInteger(minutes) || minutes < 0) {
 //         return console.log("Ошибка, проверьте данные");
@@ -80,10 +77,6 @@
 //     return console.log(`Это ${timeInHours} ${strHours} и ${timeInMinutes} минут`);
 // }
 
-
-
-
-// Место для второй задачи
 // function findMaxNumber(arg1, arg2, arg3, arg4) {
 //     let max = 0;
 //     for (let i = 0; i < arguments.length; i++) {
@@ -133,20 +126,33 @@ const options = {
     colors: {
         border: 'black',
         bg: 'red'
+    },
+    makeTest: function () {
+        console.log('Test');
     }
 };
 
-console.log(options[c]);
+options.makeTest();
+
+const {
+    border,
+    bg
+} = options.colors; // destructerization
+
+console.log(border);
+
+// console.log(Object.keys(options).length); // !!!!! number of keys
 
 // delete options.name;
 
-// console.log(options);
+// for (let key in options) {
 
-for (let key in options) {
-    if (typeof (options[key]) === 'object') {
-        for (let i in options[key]) {
-            console.log(`Property ${i} has value ${options[key][i]}`);
-        }
-    }
-    console.log(`Property ${key} has value ${options[key]}`);
-}
+//     if (typeof (options[key]) === 'object') {
+//         for (let i in options[key]) {
+//             console.log(`Property ${i} has value ${options[key][i]}`);
+//         }
+//     } else {
+//         console.log(`Property ${key} has value ${options[key]}`);
+//     }
+// }
+console.log(counter);
