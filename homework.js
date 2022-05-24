@@ -1,55 +1,30 @@
 "use strict";
 
-const someString = 'This is some strange string';
+let str = 'some';
+let strObj = new String(str);
 
-function reverse(str) {
-    if (typeof (str) !== 'string') {
-        return console.log('Error not a string');
+// console.log(typeof (str));
+// console.log(typeof (strObj));
+
+console.dir([1, 2, 3]);
+
+const soldier = {
+    health: 400,
+    armor: 100,
+    sayHello: function () {
+        console.log('hello')
     }
-    //==========================================
-    // let res = [];
-    // for (let i = 0; i <= str.length; i++) {
-    //     let temp = str[str.length - 1 - i];
-    //     res[str.length - 1 - i] = str[i];
-    //     res[i] = temp;
-    // }
-    // console.log(res.join(''));
-    //======================================
-    // return str.split('').reverse().join('');
-    //=======================================
-    let res = '';
-    for (let i = str.length - 1; i >= 0; i--) {
-        res += str[i];
-    }
-    console.log(res);
-}
+};
 
-reverse(someString);
+const john = Object.create(soldier); // !!!!!!!!!!!!!!!!!!
 
-const baseCurrencies = ['USD', 'EUR'];
-const additionalCurrencies = ['UAH', 'RUB', 'CNY'];
+// const john = {
+//     health: 100,
 
-function availableCurr(arr, missingCurr) {
-    let str = '';
-    if (arr.length === 0) {
-        str = 'There`s no available currencies';
-        // } else {
-        //     str = 'Available currencies:\n';
-        //     for (let i = 0; i < arr.length; i++) {
-        //         if (arr[i] === missingCurr) continue;
-        //         str += `${arr[i]}\n`
-        //     }
-        //     console.log(str);
-        // }
-    } else {
-        str = 'Available currencies:\n';
-        arr.forEach(function (curr) {
-            if (curr !== missingCurr) {
-                str += `${curr}\n`;
-            }
-        });
-    }
-    console.log(str);
-}
+// };
 
-availableCurr([...baseCurrencies, ...additionalCurrencies], 'RUB')
+// john.__proto__ = soldier;
+
+// Object.setPrototypeOf(john, soldier); // !!!!!!!!!!!!!!!!!!!!!!!!!!
+
+john.sayHello();
