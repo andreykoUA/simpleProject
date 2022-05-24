@@ -1,40 +1,55 @@
 "use strict";
 
-const family = ['Peter', 'Ann', 'Alex', 'Linda'];
+const someString = 'This is some strange string';
 
-function showFamily(arr) {
+function reverse(str) {
+    if (typeof (str) !== 'string') {
+        return console.log('Error not a string');
+    }
+    //==========================================
+    // let res = [];
+    // for (let i = 0; i <= str.length; i++) {
+    //     let temp = str[str.length - 1 - i];
+    //     res[str.length - 1 - i] = str[i];
+    //     res[i] = temp;
+    // }
+    // console.log(res.join(''));
+    //======================================
+    // return str.split('').reverse().join('');
+    //=======================================
+    let res = '';
+    for (let i = str.length - 1; i >= 0; i--) {
+        res += str[i];
+    }
+    console.log(res);
+}
+
+reverse(someString);
+
+const baseCurrencies = ['USD', 'EUR'];
+const additionalCurrencies = ['UAH', 'RUB', 'CNY'];
+
+function availableCurr(arr, missingCurr) {
+    let str = '';
     if (arr.length === 0) {
-        console.log('Family is empty');
+        str = 'There`s no available currencies';
+        // } else {
+        //     str = 'Available currencies:\n';
+        //     for (let i = 0; i < arr.length; i++) {
+        //         if (arr[i] === missingCurr) continue;
+        //         str += `${arr[i]}\n`
+        //     }
+        //     console.log(str);
+        // }
     } else {
-        let str = 'Family includes: ';
-        for (let member of arr) {
-            str += `${member} `;
-        }
-        console.log(`${str}`);
+        str = 'Available currencies:\n';
+        arr.forEach(function (curr) {
+            if (curr !== missingCurr) {
+                str += `${curr}\n`;
+            }
+        });
     }
-    // let str = '';
-
-    // arr.length === 0 ? str = 'Family is empty' : str = 'Family includes: ';
-
-    // arr.forEach(member => {
-    //     str += `${member} `
-    // });
-
-    // return console.log(str);
-
+    console.log(str);
 }
 
-showFamily(family);
-
-const favoriteCities = ['liSBon', 'ROME', 'miLan', 'Dublin'];
-
-function standardizeStrings(arr) {
-    for (let city of arr) {
-        console.log(city.toLowerCase());
-    }
-    //     arr.forEach(city => {
-    //         console.log(city.toLowerCase());
-    //     })
-}
-
-standardizeStrings(favoriteCities);
+availableCurr([...baseCurrencies, ...additionalCurrencies], 'RUB')
