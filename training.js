@@ -1,82 +1,52 @@
-// let n = 5;
-// ascending triangle
-// for (let i = 1; i <= n; i++) { // number of queries
-//     let str = '';
-//     for (let j = 1; j <= i; j++) {
-//         str += '* ';
-//     }
-//     console.log(str);
-// }
-// * 
-// * * 
-// * * * 
-// * * * * 
-// * * * * *
+const students = ['Peter', 'Andrew', 'Ann', 'Mark', 'Josh', 'Sandra', 'Cris', 'Bernard', 'Takesi', 'Sam', 'User'];
 
-// let n = 5;
-// for (let i = 1; i <= n; i++) { // descending triangle
-//     let str = '';
-//     for (let j = i; j <= n; j++) {
-//         str += '* ';
-//     }
-//     console.log(str);
-// }
-// * * * * * 
-// * * * * 
-// * * * 
-// * * 
-// * 
+function sortStudentsByGroups(arr) {
+    let a = [],
+        b = [],
+        c = [];
+    let str = 'Remaining: ';
 
-// let n = 5;
-// for (let i = 1; i <= n; i++) { // pyramid 
-//     let str = '';
-//     for (let j = i; j <= n; j++) {
-//         str += ' ';
-//     }
-//     for (let j = 1; j <= i; j++) {
-//         str += '* ';
-//     }
-//     console.log(str);
-// }
-//      * 
-//     * * 
-//    * * * 
-//   * * * * 
-//  * * * * * 
+    arr.sort().forEach((element, i) => {
+        if (i < 3) {
+            a.push(element);
+        } else if (i < 6) {
+            b.push(element);
+        } else if (i < 9) {
+            c.push(element);
+        } else if (i >= 9) {
+            if (i === (arr.length - 1)) {
+                str += `${element}`;
+            } else {
+                str += `${element}, `;
+            }
+        }
+    });
+    if (arr.length === 9) {
+        str += '-';
+    }
 
-// let n = 5;
-// for (let i = 1; i <= n; i++) { // flipped ascending 
-//     let str = '';
-//     for (let j = i; j <= n; j++) {
-//         str += '  ';
-//     }
-//     for (let j = 1; j <= i; j++) {
-//         str += '* ';
-//     }
-//     console.log(str);
-// }
-// //           * 
-// //         * * 
-// //       * * * 
-// //     * * * * 
-// //   * * * * * 
+    console.log([a, b, c, str]);
+}
 
-// let n = 5;
-// for (let i = 1; i <= n; i++) { // tree
-//     let str = '';
-//     for (let j = i; j <= n; j++) { // whitespaces at the beginning of query
-//         str += '  ';
+// function sortStudentsByGroups(arr) {
+//     arr.sort();
+//     let a = [],
+//         b = [],
+//         c = [],
+//         left = [];
+
+//     for (let i = 0; i < arr.length; i++) {
+//         if (i < 3) {
+//             a.push(arr[i]);
+//         } else if (i < 6) {
+//             b.push(arr[i]);
+//         } else if (i < 9) {
+//             c.push(arr[i]);
+//         } else {
+//             left.push(arr[i]);
+//         }
 //     }
-//     for (let j = 1; j < i; j++) { // j < i allws to print i - 1 amount of * 
-//         str += '* ';
-//     }
-//     for (let j = 1; j <= i; j++) { // on each iteration amount of * = i  from left side
-//         str += '* ';
-//     }
-//     console.log(str);
+
+//     return console.log([a, b, c, `Remaining students: ${left.length === 0 ? '-' : left.join(', ')}`]);
 // }
-// //           * 
-// //         * * * 
-// //       * * * * * 
-// //     * * * * * * * 
-// //   * * * * * * * * * 
+sortStudentsByGroups(students);
