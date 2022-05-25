@@ -89,12 +89,8 @@ const personalMovieDB = {
 
 // personalMovieDB.start();
 // personalMovieDB.rememberMyFilms();
-
 // personalMovieDB.detectPersonalLevel();
-
 // personalMovieDB.showMyDB(personalMovieDB.privat);
-
 // personalMovieDB.writeYourGenres();
-
 
 // console.log(personalMovieDB);
