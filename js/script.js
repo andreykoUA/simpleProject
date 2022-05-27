@@ -1,99 +1,67 @@
 "use strict";
-// for of method has ability to use "break/continue" and forEach can`t
-// pseudoarray doesn`t have methods, it only used for storing data
-// let a = 5,
-//     b = a;
 
-// b = b + 5;
+const restorantData = {
+    menu: [{
+            name: 'Salad Caesar',
+            price: '14$'
+        },
+        {
+            name: 'Pizza Diavola',
+            price: '9$'
+        },
+        {
+            name: 'Beefsteak',
+            price: '17$'
+        },
+        {
+            name: 'Napoleon',
+            price: '7$'
+        }
+    ],
+    waitors: [{
+        name: 'Alice',
+        age: 22
+    }, {
+        name: 'John',
+        age: 24
+    }],
+    averageLunchPrice: '20$',
+    openNow: true
+};
 
-// console.log(b);
-// console.log(a);
+function isOpen(prop) {
+    let answer = '';
+    prop ? answer = 'Открыто' : answer = 'Закрыто';
 
-// const obj = {
-//     a: 5,
-//     b: 1
-// };
-
-// const copy = obj; // reference to obj
-
-// copy.a = 10;
-
-// console.log(copy);
-// console.log(obj);
-
-function copy(mainObj) {
-    let objCopy = {};
-    let key;
-    for (key in mainObj) {
-        objCopy[key] = mainObj[key];
-    }
-    return objCopy;
+    return answer;
 }
 
-const numbers = {
-    a: 2,
-    b: 5,
-    c: {
-        x: 7,
-        y: 4
+console.log(isOpen(restorantData.openNow));
+
+function isAverageLunchPriceTrue(fDish, sDish, average) {
+    if (+fDish.price.slice(0, -1) + (+sDish.price.slice(0, -1)) < +average.slice(0, -1)) {
+        return 'Цена ниже средней';
+    } else {
+        return 'Цена выше средней';
     }
-};
-
-const newNumbers = copy(numbers); // surface copy 
-
-newNumbers.a = 10;
-newNumbers.c.x = 10;
-// console.log(newNumbers);
-// console.log(numbers);
-
-
-const add = {
-    d: 17,
-    e: 20
-};
-
-const clone = Object.assign({}, add); // clone object with assign method
-
-clone.d = 20;
-
-// console.log(add);
-// console.log(clone);
-
-const oldArr = ['a', 'b', 'c'];
-
-const newArr = oldArr.slice();
-
-newArr[1] = 'adq';
-console.log(newArr);
-console.log(oldArr);
-
-const video = ['youtube', 'vimeo', 'tiktok'],
-    blogs = ['wordpress', 'livejournal', 'blogger'],
-    internet = [...video, ...blogs, 'twitter']; // spread operator
-
-console.log(internet);
-
-
-function log(a, b, c) {
-    console.log(a);
-    console.log(b);
-    console.log(c);
 }
 
-const num = [2, 5, 7];
+console.log(isAverageLunchPriceTrue(restorantData.menu[1], restorantData.menu[3], restorantData.averageLunchPrice));
 
-log(...num);
-//=======================
+function transferWaitors(data) {
+    const copy = Object.assign({}, data);
+    copy.waitors = [];
+    copy.waitors[0] = {
+        name: 'Mike',
+        age: 32
+    };
+    // copy.waitors = [{  // just replace the whole array by new one and it will only affect copy
+    //     name: 'Mike',
+    //     age: 32
+    // }];
 
-const array = ['a', 'b'];
+    return copy;
 
-const newAarray = [...array]; // copy with spread operator
+}
 
-const q = {
-    one: 1,
-    two: 2
-};
-
-const newObj = {
-    ...q
-};
+transferWaitors(restorantData);

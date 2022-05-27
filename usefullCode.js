@@ -223,25 +223,83 @@ function isBudgetEnough(data) {
 isBudgetEnough(shoppingMallData);
 //==========================================
 const students = ['Peter', 'Andrew', 'Ann', 'Mark', 'Josh', 'Sandra', 'Cris', 'Bernard', 'Takesi', 'Sam'];
-// function sortStudentsByGroups(arr) {
-//     arr.sort();
-//     let a = [],
-//         b = [],
-//         c = [], 
-//         left = [];
 
-//     for (let i = 0; i < arr.length; i++) {
-//         if (i < 3) {
-//             a.push(arr[i]);
-//         } else if (i < 6) {
-//             b.push(arr[i]);
-//         } else if (i < 9) {
-//             c.push(arr[i]);
-//         } else {
-//             left.push(arr[i]);
-//         }
+function sortStudentsByGroups(arr) {
+    arr.sort();
+    let a = [],
+        b = [],
+        c = [],
+        left = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        if (i < 3) {
+            a.push(arr[i]);
+        } else if (i < 6) {
+            b.push(arr[i]);
+        } else if (i < 9) {
+            c.push(arr[i]);
+        } else {
+            left.push(arr[i]);
+        }
+    }
+
+    return console.log([a, b, c, `Remaining students: ${left.length === 0 ? '-' : left.join(', ')}`]);
+}
+sortStudentsByGroups(students);
+//=============================================================
+// let x = 5;
+// alert(x++); // 5 
+//=
+// console.log([] + false - null + true) // NaN(because [] converted to "" and you cant substract from string)
+//=
+// let y = 1;
+// let x = y = 2;
+// alert(x); // 2 
+//=
+// console.log([] + 1 + 2); // 12
+// console.log(1 + 2 + []); // 3 because when we have number type [] converts to null
+// console.log(1 + 2 + [0]); // depending of index in brackets the digit will be put after 1+2=3 and 0 will be 30
+//=
+// alert("1" [0]); // 1
+// alert("12" [1]); // undefined because [1] represent second symbol in string "1" which has only 1 value(0 index)
+//=
+// console.log(2 && 1 && null && 0 && undefined); // null
+//= 
+// Difference between !!(a && b) and(a && b); // false !! convert to boolean and other is number type
+// console.log(!!(a && b) === (a && b))
+//=       0   ||   3    || 4
+// alert(null || 2 && 3 || 4); // 3 ; && return last true if both true; || return first true 
+//=
+// a = [1, 2, 3];
+// b = [1, 2, 3];
+// console.log(a === b); // false
+// console.log(a[0] === b[0]); // true
+//=
+// alert(+"Infinity"); //  Infinity
+//=
+// console.log("Ёжик" > "яблоко") // false 
+
+//=
+// console.log(0 || "" || 2 || undefined || true || false) // 2 
+//=
+
+// function createCounter() {
+//     let counter = 0;
+
+//     const myFunction = function () {
+//         counter = counter + 1;
+//         return counter;
 //     }
 
-//     return console.log([a, b, c, `Remaining students: ${left.length === 0 ? '-' : left.join(', ')}`]);
+//     return myFunction;
 // }
-sortStudentsByGroups(students);
+
+// const increment = createCounter();
+// const c1 = increment();
+// const c2 = increment();
+// const c3 = increment();
+
+// console.log(c1, c2, c3);
+//====================================
+
+console.log('14$'.slice(0, -1) > 17)
