@@ -1,67 +1,109 @@
 "use strict";
 
-const restorantData = {
-    menu: [{
-            name: 'Salad Caesar',
-            price: '14$'
-        },
-        {
-            name: 'Pizza Diavola',
-            price: '9$'
-        },
-        {
-            name: 'Beefsteak',
-            price: '17$'
-        },
-        {
-            name: 'Napoleon',
-            price: '7$'
-        }
-    ],
-    waitors: [{
-        name: 'Alice',
-        age: 22
-    }, {
+// function pow(x, n) {
+//     let result = 1;
+
+//     for (let i = 0; i < n; i++) {
+//         result *= x;
+//     }
+
+//     return result;
+// }
+
+// function pow(x, n) {
+//     if (n === 1) {
+//         return x;
+//     } else {
+//         return x * pow(x, n - 1);
+//     }
+// }
+
+// pow(2, 1); //2
+// pow(2, 2); //4
+// pow(2, 3); //8
+// pow(2, 4); //16
+
+let students = {
+    js: [{
         name: 'John',
-        age: 24
+        progress: 100
+    }, {
+        name: 'Ivan',
+        progress: 60
     }],
-    averageLunchPrice: '20$',
-    openNow: true
+
+    html: {
+        basic: [{
+            name: 'Peter',
+            progress: 20
+        }, {
+            name: 'Ann',
+            progress: 18
+        }],
+
+        pro: [{
+            name: 'Sam',
+            progress: 10
+        }],
+
+        semi: {
+            students: [{
+                name: 'Test',
+                progress: 100
+            }]
+        }
+    }
 };
 
-function isOpen(prop) {
-    let answer = '';
-    prop ? answer = 'Открыто' : answer = 'Закрыто';
+function getTotalProgressByIteration(data) {
+    let total = 0;
+    let students = 0;
 
-    return answer;
+    for (let course of Object.values(data)) {
+        if (Array.isArray(course)) {
+            students += course.length;
+
+            for (let i = 0; i < course.length; i++) {
+                total += course[i].progress;
+            }
+        } else {
+            for (let subCourse of Object.values(course)) {
+                students += subCourse.length;
+
+                for (let i = 0; i < subCourse.length; i++) {
+                    total += subCourse[i].progress;
+                }
+            }
+        }
+
+    }
+
+    return total / students;
 }
 
-console.log(isOpen(restorantData.openNow));
+console.log(getTotalProgressByIteration(students));
 
-function isAverageLunchPriceTrue(fDish, sDish, average) {
-    if (+fDish.price.slice(0, -1) + (+sDish.price.slice(0, -1)) < +average.slice(0, -1)) {
-        return 'Цена ниже средней';
-    } else {
-        return 'Цена выше средней';
+function getTotalProgressByRecursion(data) {
+    if (Array.isArray(data)) { // recursion base  // checking if structure is an array 
+        let total = 0;
+
+        for (let i = 0; i < data.length; i++) { // from array of objects extract progress value and sum them
+            total += data[i].progress;
+        }
+
+        return [total, data.length]; // total is a progress of all students in array; data.length number of students
+    } else { // recursion part is below and repeating until meets the recursion base conditions
+        let total = [0, 0];
+
+        for (let subData of Object.values(data)) { // getting vaules of the object (key: value)
+            const subDataArray = getTotalProgressByRecursion(subData); // to value calling recursion hence the result will be array
+            total[0] += subDataArray[0]; // total progress
+            total[1] += subDataArray[1]; // amount of students
+        }
+
+        return total; // returning array with 2 elements
     }
 }
 
-console.log(isAverageLunchPriceTrue(restorantData.menu[1], restorantData.menu[3], restorantData.averageLunchPrice));
-
-function transferWaitors(data) {
-    const copy = Object.assign({}, data);
-    copy.waitors = [];
-    copy.waitors[0] = {
-        name: 'Mike',
-        age: 32
-    };
-    // copy.waitors = [{  // just replace the whole array by new one and it will only affect copy
-    //     name: 'Mike',
-    //     age: 32
-    // }];
-
-    return copy;
-
-}
-
-transferWaitors(restorantData);
+const result = getTotalProgressByRecursion(students); // result is an array with 2 elements
+console.log(result[0] / result[1]);
