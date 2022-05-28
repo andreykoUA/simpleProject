@@ -81,7 +81,7 @@ function getTotalProgressByIteration(data) {
     return total / students;
 }
 
-console.log(getTotalProgressByIteration(students));
+// console.log(getTotalProgressByIteration(students));
 
 function getTotalProgressByRecursion(data) {
     if (Array.isArray(data)) { // recursion base  // checking if structure is an array 
@@ -106,4 +106,21 @@ function getTotalProgressByRecursion(data) {
 }
 
 const result = getTotalProgressByRecursion(students); // result is an array with 2 elements
-console.log(result[0] / result[1]);
+// console.log(result[0] / result[1]);
+
+function factorial(num) {
+    if (typeof (num) !== 'number' || !Number.isInteger(num)) {
+        return console.log("Only integer numbers!");
+    }
+    if (num >= 1) { // base of recursion
+        return num * factorial(num - 1);
+    } else {
+        return 1;
+    }
+
+}
+
+console.log(factorial(5));
+console.log(factorial(0));
+console.log(factorial(-5));
+console.log(factorial(5.5));
